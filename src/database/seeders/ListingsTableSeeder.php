@@ -20,12 +20,12 @@ class ListingsTableSeeder extends Seeder
         ];
         DB::table('listings')->insert($param);
         $param = [
-            'user_id' => '1',
+            'user_id' => '2',
             'product_id' => '2',
         ];
         DB::table('listings')->insert($param);
         $param = [
-            'user_id' => '1',
+            'user_id' => '3',
             'product_id' => '3',
         ];
         DB::table('listings')->insert($param);
@@ -35,12 +35,12 @@ class ListingsTableSeeder extends Seeder
         ];
         DB::table('listings')->insert($param);
         $param = [
-            'user_id' => '1',
+            'user_id' => '2',
             'product_id' => '5',
         ];
         DB::table('listings')->insert($param);
         $param = [
-            'user_id' => '1',
+            'user_id' => '3',
             'product_id' => '6',
         ];
         DB::table('listings')->insert($param);
@@ -50,12 +50,12 @@ class ListingsTableSeeder extends Seeder
         ];
         DB::table('listings')->insert($param);
         $param = [
-            'user_id' => '1',
+            'user_id' => '2',
             'product_id' => '8',
         ];
         DB::table('listings')->insert($param);
         $param = [
-            'user_id' => '1',
+            'user_id' => '3',
             'product_id' => '9',
         ];
         DB::table('listings')->insert($param);

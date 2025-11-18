@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Listing;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,18 +13,14 @@ class IndexController extends Controller
     {
         if (Auth::check())
         {
-            $user = Auth::user();
             $userId = Auth::id();
-            $favorites = $user->favoriteProducts;
-            $userId = Auth::id();
-            $products = Product::with('orders')->whereDoesntHave
-            ('users', function ($query) use ($userId)
-            {
-                $query->where('user_id', $userId);
-            })->get();
-
+            $favorites = Auth::user()->favoriteProducts ?? collect();
+            $listedProductIds = Listing::where('user_id', $userId)->pluck('product_id');
+            $products = Product::with('orders')
+                ->whereNotIn('id', $listedProductIds)
+                ->get();
         }else{
-            $favorites = null;
+            $favorites = collect();
             $products = Product::with('orders')->get();
         }
 

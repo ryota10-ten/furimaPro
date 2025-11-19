@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Middleware\EnsureUserIsLoggedIn;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
-use App\Http\Middleware\EnsureUserIsLoggedIn;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SellController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SellController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -41,6 +42,8 @@ Route::post('/login',[LoginController::class,'login']);
 
 Route::get('/', [IndexController::class,'index']);
 Route::get('/search',[IndexController::class,'search']);
+
+Route::get('/transaction',[TransactionController::class,'index']);
 
 Route::get('/item/{id}', [ProductController::class, 'show'])->name('item.show');
 Route::middleware('auth')->group(function () {

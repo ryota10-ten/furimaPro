@@ -11,9 +11,11 @@ class ProfileController extends Controller
     public function mypage()
     {
         $user = Auth::user();
+        $averageRating = $user->reviewsReceived()->avg('rating');
+        $ratingStars = round($averageRating ?? 0);
         $listings = $user->listingProducts;
         $orders = $user->orderProducts;
 
-        return view ('mypage',compact('listings','orders'));
+        return view ('mypage',compact('listings','orders','ratingStars'));
     }
 }

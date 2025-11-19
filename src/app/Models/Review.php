@@ -9,6 +9,13 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'transaction_id',
+        'reviewer_id',
+        'reviewee_id',
+        'rating',
+    ];
+
     public function reviewer()
     {
         return $this->belongsTo(User::class, 'reviewer_id');
@@ -19,8 +26,8 @@ class Review extends Model
         return $this->belongsTo(User::class, 'reviewee_id');
     }
 
-    public function order()
+    public function transaction()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Transaction::class);
     }
 }

@@ -18,9 +18,15 @@ class Order extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function reviews()
+    public function transaction()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasOne(Transaction::class);
     }
+
+    public function buyer()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }
 

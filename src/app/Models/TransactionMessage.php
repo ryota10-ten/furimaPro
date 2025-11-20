@@ -13,7 +13,12 @@ class TransactionMessage extends Model
         'transaction_id',
         'sender_id',
         'message',
+        'read',
         'image_path',
+    ];
+
+    protected $casts = [
+        'read' => 'boolean',
     ];
 
     public function transaction()

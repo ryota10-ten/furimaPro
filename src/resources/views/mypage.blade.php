@@ -36,12 +36,12 @@
 <div class="tab_wrap">
     <input id="tab1" type="radio" name="tab_btn" checked>
     <input id="tab2" type="radio" name="tab_btn">
-
+    <input id="tab3" type="radio" name="tab_btn">
     <div class="tab_area">
         <label class="tab1_label" for="tab1">出品した商品</label>
         <label class="tab2_label" for="tab2">購入した商品</label>
         <label class="tab3_label" for="tab3">
-            取引中の商品<span class="number">2</span>
+            取引中の商品<span class="number">{{ $totalUnread }}</span>
         </label>
     </div>
     <div class="panel_area">
@@ -82,17 +82,20 @@
             @endforeach
         </div>
         <div id="panel3" class="product__list">
-            @foreach ($orders as $product)
+            @foreach ($transactions as $transaction)
             <div class="product__item">
-                <a class="product__link" href="/item/{{ $product['id'] }}">
+                <a class="product__link" href="/transaction/{{ $transaction->id }}">
                     <div class="product__img">
-                        <img class="img" src="{{ asset('storage/' . $product['img']) }}" alt="{{ $product['name'] }}">
+                        <img class="img" src="{{ asset('storage/' . $transaction->product->img) }}" alt="{{ $transaction->product->name }}">
+                        @php
+                            $unread = $transaction->unreadMessageCount(Auth::id());
+                        @endphp
+                        @if ($unread > 0)
+                            <span class="notification__badge">{{ $unread }}</span>
+                        @endif
                     </div>
                     <div class="product__name">
                         {{ $product['name'] }}
-                    </div>
-                    <div class="product__sold">
-                        SOLD
                     </div>
                 </a>
             </div>

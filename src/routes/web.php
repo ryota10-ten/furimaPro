@@ -43,7 +43,7 @@ Route::post('/login',[LoginController::class,'login']);
 Route::get('/', [IndexController::class,'index']);
 Route::get('/search',[IndexController::class,'search']);
 
-Route::get('/transaction',[TransactionController::class,'index']);
+Route::get('/transaction/{id}',[TransactionController::class,'index']);
 
 Route::get('/item/{id}', [ProductController::class, 'show'])->name('item.show');
 Route::middleware('auth')->group(function () {

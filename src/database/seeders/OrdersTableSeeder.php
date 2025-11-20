@@ -35,6 +35,16 @@ class OrdersTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'user_id' => 1,
+                'product_id' => 6,
+                'method' => 'コンビニ払い',
+                'post' => '234-5678',
+                'address' => '大阪府大阪市2-2-2',
+                'building' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

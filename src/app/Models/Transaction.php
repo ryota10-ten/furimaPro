@@ -9,6 +9,9 @@ class Transaction extends Model
 {
     use HasFactory;
 
+    const STATUS_PENDING = 1;
+    const STATUS_COMPLETED = 2;
+
     protected $fillable = [
         'order_id',
         'product_id',
@@ -17,6 +20,14 @@ class Transaction extends Model
         'status',
         'last_message_at',
     ];
+
+    public function scopeRelatedToUser($query, $userId)
+    {
+        return $query->where(function ($q) use ($userId) {
+            $q->where('seller_id', $userId)
+              ->orWhere('buyer_id', $userId);
+        });
+    }
 
     public function order()
     {
@@ -46,5 +57,13 @@ class Transaction extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function unreadMessageCount($userId)
+    {
+        return $this->messages()
+            ->where('sender_id', '!=', $userId)
+            ->where('read', false)
+            ->count();
     }
 }

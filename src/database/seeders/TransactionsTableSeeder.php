@@ -28,7 +28,7 @@ class TransactionsTableSeeder extends Seeder
             [
                 'order_id' => 2,
                 'product_id' => 2,
-                'seller_id' => 2,
+                'seller_id' => 1,
                 'buyer_id' => 3,
                 'status' => 1,
                 'last_message_at' => now(),

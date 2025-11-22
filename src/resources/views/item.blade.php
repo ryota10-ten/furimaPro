@@ -103,10 +103,10 @@
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <textarea class="input__comment" name="comment" placeholder="コメントを入力" rows="10" value="{{ old('comment') }}"></textarea>
             <div class="form__error">
-            @error('comment')
-            {{ $message }}
-            @enderror
-        </div>
+                @error('comment')
+                {{ $message }}
+                @enderror
+            </div>
             <button class="button__comment" type="submit">
                 コメントを送信する
             </button>

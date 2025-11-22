@@ -10,6 +10,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionMessageController;
 use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -43,9 +44,8 @@ Route::post('/login',[LoginController::class,'login']);
 Route::get('/', [IndexController::class,'index']);
 Route::get('/search',[IndexController::class,'search']);
 
-Route::get('/transaction/{id}',[TransactionController::class,'index']);
-
 Route::get('/item/{id}', [ProductController::class, 'show'])->name('item.show');
+
 Route::middleware('auth')->group(function () {
     Route::post('/logout',[LoginController::class,'logout']);
     Route::post('/comments', [ProductController::class, 'store']);
@@ -62,4 +62,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/purchase/fix/{id}',[PurchaseController::class,'fix'])->name('purchase.fix');
     Route::get('/success', [PurchaseController::class, 'success'])->name('success');
     Route::get('/cancel', [PurchaseController::class, 'cancel'])->name('cancel');
+    Route::get('/transaction/{id}',[TransactionController::class,'index']);
+    Route::post('/transaction/message', [TransactionMessageController::class, 'store'])->name('transaction.message.send');
+    Route::put('/transaction/message/{id}', [TransactionMessageController::class, 'update'])->name('transaction.message.update');
+    Route::delete('/transaction/message/{id}', [TransactionMessageController::class, 'delete'])->name('transaction.message.delete');
+    Route::post('/transaction/{id}/complete', [TransactionController::class, 'complete'])->name('transaction.complete');
 });

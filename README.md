@@ -126,18 +126,24 @@ http://localhost/
 ## シーディングデータ
 [Uesr]
 1. テスト1
+email:test1@example.com
+pass:testtest
 
 出品商品ID:1〜5
 
 取引ID:1,2(全て出品者)
 
 2. テスト2
+email:test2@example.com
+pass:testtest
 
 出品商品ID:6〜10
 
 取引ID:1(購入者)
 
 3. テスト3
+email:test3@example.com
+pass:testtest
 
 出品商品:なし
 

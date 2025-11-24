@@ -98,7 +98,7 @@
                         @endif
                     </div>
                     <div class="product__name">
-                        {{ $product['name'] }}
+                        {{ $transaction->product->name }}
                     </div>
                 </a>
             </div>

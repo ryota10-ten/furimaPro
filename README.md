@@ -1,61 +1,82 @@
-# coachtechフリマ
+# coachtechフリマ(取引機能の実装)
 
 ## 概要
 アイテムの出品と購入を行うためのフリマアプリです。
+今回、商品購入後に出品者とチャットでのコミュニケーションができる機能を追加しました。
 
-## 主な機能
-新規会員登録
-ログイン
-ログアウト
-出品した商品以外の商品一覧取得
-いいねをした商品一覧取得
-商品検索
-商品詳細情報取得
-商品に対してのいいね送信機能
-商品に対してのコメント送信機能
+## 主な追加機能
+
+出品者と購入者のチャット機能(出品者、購入者でもない場合は表示されない)
+
+取引完了後の出品者と購入者による双方のレビュー機能
+
+マイページ内に自身が受けた平均レビューの表示
+
+マイページに取引中の商品の表示
+
+取引完了後に出品者側へのメール送信機能
 
 ## 使用技術
 laravel=8.*
+
 php:7.4.9-fpm
+
 mysql:8.0.26
+
 nginx:1.21.1
 
 ## 開発環境
 トップページ:http://localhost/
-会員登録ページ:http://localhost/register
+
+会員ログインページ:http://localhost/login
+
+(ユーザーログイン後)
+
+マイページ:http://localhost/mypage
+
 phpmyadmin:http://localhost:8080/index.php
 
 ## セットアップ
 1. リポジトリをクローン
-ディレクトリ以下に、furima.gitをクローンしてリポジトリ名をfurimaTestに変更。
+
+ディレクトリ以下に、furima.gitをクローンしてリポジトリ名をfurimaProTestに変更。
 
 git clone git@github.com:ryota10-ten/furima.git
-mv furima furimaTest
-cd furimaTest
+
+mv furimaPro furimaProTest
+
+cd furimaProTest
 
 2. Docker の設定
+
 docker compose up -d --build
 
 code .
 
-*furimatestコンテナが作成されていれば成功です。
+*furimaProtestコンテナが作成されていれば成功です。
 
 3. Laravel のパッケージのインストール
+
 docker-compose exec php bash
 
 composer install
 
 4. .env ファイルの作成
+
 cp .env.example .env
 
 .env.example をコピーして .env を作成。
 
 ※メール送信の設定（Mailtrap）
+
 （１）Mailtrap のアカウント作成
+
 Mailtrap の公式サイト（https://mailtrap.io/）にアクセスし、無料アカウントを作成してください。
 
 （２）Mailtrap の SMTP 設定を取得
+
 Mailtrap にログイン後、Inbox を作成
+
 Start Testing を開く
 
 Laravel 7+ and 8.Xの設定を選択
@@ -80,45 +101,49 @@ MAIL_FROM_NAME="Furima App"
 
 MAIL_USERNAME と MAIL_PASSWORD には Mailtrap のダッシュボードで確認できる値を入力してください。
 
-決済機能の設定（Stripe）
-（１）Stripe のアカウント作成
-Stripe の公式サイト（https://stripe.com/jp）にアクセスし、無料アカウントを作成
-Stripe の ダッシュボード にログイン
-「開発者」モードを有効化（テスト環境用 API キーを取得するため）
-
-（２）Stripe ダッシュボードの 「APIキー」 セクションへ移動
-以下の 2 つのキーを取得
-公開可能キー（Publishable key）
-シークレットキー（Secret key）
-
-.env ファイルを開き、以下の Stripe 設定を追加または変更してください。
-STRIPE_KEY=your_publishable_key
-STRIPE_SECRET=your_secret_key
-
-※ your_publishable_key と your_secret_key には Stripe ダッシュボードで取得した値を入力してください。
-本番環境では、本番用の API キー に変更してください（テストキーと本番キーは異なります）。
-
 5. アプリキーの生成
+
 以下のコマンドを実行して、アプリケーションの暗号化キーを生成してください。
+
 php artisan key:generate
 
 6. ストレージのシンボリックリンク作成
+
 php artisan storage:link
 
 7. マイグレーションとシーディングの実装
+
 php artisan migrate:fresh --seed
 
 8. サーバーを起動
 
 php artisan serve
+
 ブラウザで
 http://localhost/
 にアクセスするとアプリを確認できます。
 
+## シーディングデータ
+[Uesr]
+1. テスト1
 
+出品商品ID:1〜5
 
+取引ID:1,2(全て出品者)
 
+2. テスト2
 
+出品商品ID:6〜10
 
+取引ID:1(購入者)
+
+3. テスト3
+
+出品商品:なし
+
+取引ID:2(購入者)
+
+## ER図
+![](ER.png)
 
 # furimaPro

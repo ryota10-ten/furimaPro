@@ -35,7 +35,7 @@ class Product extends Model
     
     public function listings()
     {
-        return $this->hasMany(Listing::class);
+        return $this->hasOne(Listing::class);
     }
 
     public function users()
@@ -72,6 +72,12 @@ class Product extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
 
     protected $table = 'products';
 }

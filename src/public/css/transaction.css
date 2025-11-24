@@ -1,0 +1,325 @@
+.header {
+    width: 100%;
+}
+
+.header__inner {
+    background-color: black;
+    padding: 20px 20px;
+}
+
+.header__logo {
+    padding: 5px 5px;
+    display: flex;
+    justify-content: left;
+}
+
+.content {
+    width: 100%;
+    margin: 100 auto;
+}
+
+.transaction {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu {
+    width: 15%;
+    min-height: 100vh;
+    background-color: #868686;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        width: 20%;
+        min-height: 100vh;
+        background-color: #868686;
+        text-align: center;
+    }
+}
+
+.menu__header {
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.product__name {
+    margin: 5% auto;
+    background-color: #EEEFEB;
+    width: 80%;
+    cursor: pointer;
+}
+
+.product__name a,
+.product__name a:hover,
+.product__name a:visited,
+.product__name a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.transaction__content {
+    width: 100%;
+}
+
+.transaction__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.profile__item {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.default-icon {
+    background-color: #D9D9D9;
+    border-radius: 50%;
+}
+
+.profile__item--profile {
+    width: 100%;
+    font-weight: bold;
+    padding-left: 5%;
+}
+
+.fix__button {
+    border-radius: 30px;
+    width: 20%;
+    padding: 5px;
+    background-color: #FF8282;
+}
+
+.fix__button--completed {
+    background-color: #FF8282;
+    border-radius: 30px;
+    width: 20%;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.fix__button button {
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .fix__button {
+        border-radius: 30px;
+        width: 25%;
+        padding: 5px;
+        background-color: #FF8282;
+    }
+
+    .fix__button button {
+        background-color: transparent;
+        color: white;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+
+    .fix__button--completed {
+        border-radius: 30px;
+        width: 25%;
+        padding: 5px;
+        background-color: #FF8282;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.product__item {
+    display: flex;
+    justify-content: flex-start;
+    padding: 2%;
+    border-bottom: 1px solid black;
+}
+
+.img__size {
+    width: 100px;
+    height: 100px;
+}
+
+.product__detail {
+    width: 100%;
+    margin-left: 5%;
+}
+
+.product__detail--name {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.chat__space {
+    padding: 2%;
+    padding-bottom: 70px;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.reception__message {
+    margin: 3% 0;
+}
+
+.reception__detail {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1%;
+    width: 50%;
+}
+
+.reception__name {
+    padding-left: 2%;
+    width: 100%;
+}
+
+.message {
+    background-color: #D9D9D9;
+    padding: 1%;
+    width: 45%;
+}
+
+.message__img {
+    margin-top: 8px;
+}
+
+.message__img img {
+    max-width: 180px;
+}
+
+.send__message {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 3% 0;
+}
+
+.send__detail {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1%;
+    width: 50%;
+}
+
+.send__name {
+    padding-right: 2%;
+}
+
+.message__edit {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: smaller;
+    width: 50%;
+    margin: 1%;
+}
+
+.message__edit--edit {
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.message__edit--delete {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.edit__form {
+    display: none;
+    margin-top: 10px;
+    width: 45%;
+}
+
+.edit__form--message button {
+    background-color: white;
+    border: none;
+}
+
+.message__form {
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 80%;
+    background-color: white;
+}
+
+.image__pre {
+    position: fixed;
+    bottom: 60px;
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.send__text {
+    border: 1px solid #5F5F5F;
+    color: #7B7B7B;
+    border-radius: 4px;
+    width: 80%;
+    padding-left: 2%;
+    height: 30px;
+}
+
+.send__img {
+    margin: 0 1%;
+    border: 2px solid #FF5555;
+    border-radius: 10px;
+    color: #FF5555;
+    text-align: center;
+    padding: 1px;
+    width: 20%;
+    height: 30px;
+    cursor: pointer;
+}
+
+.send__img input {
+    display: none;
+}
+
+.send__icon {
+    text-align: center;
+    background-color: white;
+    border: none;
+}
+
+.send__icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.form__errors {
+    font-size: smaller;
+    color: red;
+}

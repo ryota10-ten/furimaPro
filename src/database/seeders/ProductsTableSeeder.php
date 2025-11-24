@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => '腕時計',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
+                'img' => 'Armani+Mens+Clock.jpg',
                 'price' => 15000,
                 'detail' => 'スタイリッシュなデザインのメンズ腕時計',
                 'condition_id' => 1,
@@ -24,7 +24,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => 'HDD',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
+                'img' => 'HDD+Hard+Disk.jpg',
                 'price' => 5000,
                 'detail' => '高速で信頼性の高いハードディスク',
                 'condition_id' => 2,
@@ -32,7 +32,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => '玉ねぎ3束',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
+                'img' => 'iLoveIMG+d.jpg',
                 'price' => 300,
                 'detail' => '新鮮な玉ねぎ3束のセット',
                 'condition_id' => 3,
@@ -40,7 +40,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => '革靴',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
+                'img' => 'Leather+Shoes+Product+Photo.jpg',
                 'price' => 4000,
                 'detail' => 'クラシックなデザインの革靴',
                 'condition_id' => 3,
@@ -48,7 +48,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => 'ノートPC',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
+                'img' => 'Living+Room+Laptop.jpg',
                 'price' => 45000,
                 'detail' => '高性能なノートパソコン',
                 'condition_id' => 1,
@@ -56,7 +56,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => 'マイク',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
+                'img' => 'Music+Mic+4632231.jpg',
                 'price' => 8000,
                 'detail' => '高音質のレコーディング用マイク',
                 'condition_id' => 2,
@@ -64,7 +64,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => 'ショルダーバッグ',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
+                'img' => 'Purse+fashion+pocket.jpg',
                 'price' => 3500,
                 'detail' => 'おしゃれなショルダーバッグ',
                 'condition_id' => 3,
@@ -72,7 +72,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => 'タンブラー',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
+                'img' => 'Tumbler+souvenir.jpg',
                 'price' => 500,
                 'detail' => '使いやすいタンブラー',
                 'condition_id' => 4,
@@ -80,7 +80,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => 'コーヒーミル',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
+                'img' => 'Waitress+with+Coffee+Grinder.jpg',
                 'price' => 4000,
                 'detail' => '手動のコーヒーミル',
                 'condition_id' => 1,
@@ -88,7 +88,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'name' => 'メイクセット',
                 'brand' => 'A',
-                'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
+                'img' => 'MakeSet.jpg',
                 'price' => 2500,
                 'detail' => '便利なメイクアップセット',
                 'condition_id' => 2,
@@ -96,14 +96,15 @@ class ProductsTableSeeder extends Seeder
         ];
 
         foreach ($products as $product) {
-            $imageContent = file_get_contents($product['img_url']);
-            $imageName = 'imgs/' . Str::random(10) . '.jpg';
-            Storage::disk('public')->put($imageName, $imageContent);
+            $localPath = public_path('img/' . $product['img']);
+            $storagePath = 'img/' . $product['img'];
+            Storage::disk('public')->put($storagePath, file_get_contents($localPath));
 
+            $imageName = 'img/' . $product['img'];
             DB::table('products')->insert([
                 'name' => $product['name'],
                 'brand' => $product['brand'],
-                'img' => $imageName,
+                'img' => $storagePath,
                 'price' => $product['price'],
                 'detail' => $product['detail'],
                 'condition_id' => $product['condition_id'],

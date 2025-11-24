@@ -41,7 +41,7 @@ phpmyadmin:http://localhost:8080/index.php
 
 ディレクトリ以下に、furima.gitをクローンしてリポジトリ名をfurimaProTestに変更。
 
-git clone git@github.com:ryota10-ten/furima.git
+git clone git@github.com:ryota10-ten/furimaPro.git
 
 mv furimaPro furimaProTest
 

@@ -6,6 +6,7 @@
     <title>CoachTech</title>
     <link rel="stylesheet" href="{{asset('css/sanitize.css')}}">
     <link rel="stylesheet" href="{{asset('css/transaction.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/review.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
@@ -46,13 +47,17 @@
                     @php
                         $userId = Auth::id();
                     @endphp
-                    @if ($transaction->buyer_id == $userId)
+                    @if ($transaction->buyer_id == $userId && $transaction->status == \App\Models\Transaction::STATUS_PENDING)
                         <form action="{{ route('transaction.complete', $transaction->id) }}" method="POST" class="fix__button">
                             @csrf
                             <button type="submit">
                                 取引を完了する
                             </button>
                         </form>
+                    @elseif ($transaction->buyer_id == $userId && $transaction->status == \App\Models\Transaction::STATUS_COMPLETED)
+                        <div class="fix__button--completed">
+                            取引完了済み
+                        </div>
                     @endif
                 </div>
                 <div class="product__item">
@@ -176,6 +181,9 @@
                 </div>
             </div>
         </div>
+        @if ($showReviewModal)
+            @include('review')
+        @endif
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 window.toggleEditForm = function(id) {

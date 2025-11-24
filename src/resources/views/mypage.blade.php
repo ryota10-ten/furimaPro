@@ -41,7 +41,10 @@
         <label class="tab1_label" for="tab1">出品した商品</label>
         <label class="tab2_label" for="tab2">購入した商品</label>
         <label class="tab3_label" for="tab3">
-            取引中の商品<span class="number">{{ $totalUnread }}</span>
+            取引中の商品
+            @if ($totalUnread >= 1)
+                <span class="number">{{ $totalUnread }}</span>
+            @endif
         </label>
     </div>
     <div class="panel_area">

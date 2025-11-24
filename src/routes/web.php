@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransactionController;
@@ -36,7 +37,7 @@ Route::post('/email/verification-notification', [VerificationController::class, 
 Route::get('/register', [UserController::class, 'register']);
 Route::post('/mypage/profile/', [UserController::class, 'store']);
 
-Route::post('/',[UserController::class,'add']);
+Route::post('/',[UserController::class,'add'])->name('index');
 
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'login']);
@@ -67,4 +68,5 @@ Route::middleware('auth')->group(function () {
     Route::put('/transaction/message/{id}', [TransactionMessageController::class, 'update'])->name('transaction.message.update');
     Route::delete('/transaction/message/{id}', [TransactionMessageController::class, 'delete'])->name('transaction.message.delete');
     Route::post('/transaction/{id}/complete', [TransactionController::class, 'complete'])->name('transaction.complete');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 });

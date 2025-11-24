@@ -7,7 +7,7 @@
 **取引金額:** ¥{{ number_format($transaction->product->price) }}
 
 
-@component('mail::button', ['url' => url('/transactions/'.$transaction->id)])
+@component('mail::button', ['url' => url('/transaction/'.$transaction->id)])
 取引詳細を見る
 @endcomponent
 

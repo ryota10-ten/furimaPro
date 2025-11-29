@@ -26,7 +26,6 @@ class TransactionController extends Controller
             : $transaction->seller;
         $messages = $transaction->messages()->orderBy('created_at')->get();
         $otherTransactions = Transaction::with('product')
-            ->where('status', Transaction::STATUS_PENDING)
             ->where(function ($q) use ($userId) {
                 $q->where('seller_id', $userId)
                   ->orWhere('buyer_id', $userId);

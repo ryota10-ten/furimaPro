@@ -139,7 +139,7 @@ pass:testtest
 
 出品商品ID:6〜10
 
-取引ID:1(購入者)
+取引ID:1(購入者),3(出品者),4(出品者)
 
 3. テスト3
 email:test3@example.com
@@ -147,7 +147,7 @@ pass:testtest
 
 出品商品:なし
 
-取引ID:2(購入者)
+取引ID:2,3,4(購入者)
 
 ## ER図
 ![](ER.png)

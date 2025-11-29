@@ -35,6 +35,26 @@ class TransactionsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'order_id' => 3,
+                'product_id' => 6,
+                'seller_id' => 2,
+                'buyer_id' => 3,
+                'status' => 1,
+                'last_message_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'order_id' => 3,
+                'product_id' => 7,
+                'seller_id' => 2,
+                'buyer_id' => 3,
+                'status' => 1,
+                'last_message_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
